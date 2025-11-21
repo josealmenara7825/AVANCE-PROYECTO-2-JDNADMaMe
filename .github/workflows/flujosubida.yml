@@ -1,4 +1,3 @@
-cat > .github/workflows/flujosubida.yml << 'EOF'
 name: Integración y entrega continua
 
 on:
@@ -42,4 +41,3 @@ jobs:
       - name: variables abiertas
         run: |
           echo "Versión del proyecto: ${{ env.version_proyecto }}"
-EOF
