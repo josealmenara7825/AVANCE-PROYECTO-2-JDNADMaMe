@@ -1,0 +1,45 @@
+cat > .github/workflows/flujosubida.yml << 'EOF'
+name: Integración y entrega continua
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    env:
+      nombres: "Jose Antonio"
+      apellidos: "Almenara Maldonado"
+      edad: "40"
+      version_proyecto: "3.0"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: presentación
+        run: |
+          echo "---- Presentación ----"
+          echo "Nombres: ${{ env.nombres }}"
+          echo "Apellidos: ${{ env.apellidos }}"
+          echo "Edad: ${{ env.edad }}"
+          echo "----------------------"
+
+      - name: datos generales
+        run: |
+          echo "carrera de ingeniería de sistemas"
+
+      - name: variables de entorno secretas
+        run: |
+          echo "---- Secretos (enmascarados) ----"
+          echo "user: ${{ secrets.user }}"
+          echo "password: ${{ secrets.password }}"
+          echo "---------------------------------"
+
+      - name: variables abiertas
+        run: |
+          echo "Versión del proyecto: ${{ env.version_proyecto }}"
+EOF
